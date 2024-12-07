@@ -57,7 +57,19 @@
                 const data = await response.json();
                 const tableBody = document.getElementById("table");
                 // Iterate over the results and populate the table
-                
+                data.results.forEach(element => {
+                    const row = document.createElement("tr");
+                    row.setAttribute("data-theme", "light");
+                    row.innerHTML = `
+                        <td>${element.year}</td>
+                        <td>${element.semester}</td>
+                        <td>${element.the_programs}</td>
+                        <td>${element.nationality}</td>
+                        <td>${element.colleges}</td>
+                        <td>${element.number_of_students}</td>
+                    `;
+                    tableBody.appendChild(row);
+                }); 
         }
         // Call the function to fetch and display data
         getData();
